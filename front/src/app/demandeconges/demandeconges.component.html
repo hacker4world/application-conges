@@ -1,0 +1,71 @@
+<body>
+  <div class="container">
+    <h2>Demande de Congé</h2>
+    <p style="color: red" *ngIf="erreur">{{ erreur }}</p>
+    <form (ngSubmit)="Demande()">
+      <label for="nom">ID :</label>
+      <input
+        type="text"
+        id="id"
+        name="id"
+        required
+        [(ngModel)]="data.id"
+        [readOnly]="true"
+      />
+
+      <label for="nom">Nom :</label>
+      <input
+        type="text"
+        id="nom"
+        name="nom"
+        required
+        [(ngModel)]="data.nom"
+        [readOnly]="true"
+      />
+
+      <label for="nom">Prenom :</label>
+      <input
+        type="text"
+        id="prenom"
+        name="prenom"
+        required
+        [(ngModel)]="data.prenom"
+        [readOnly]="true"
+      />
+
+      <label for="date-debut">Date de Début :</label>
+      <input
+        type="date"
+        id="date_debut"
+        name="datedebut"
+        required
+        [(ngModel)]="data.datedebut"
+      />
+
+      <label for="date-fin">Date de Fin :</label>
+      <input
+        type="date"
+        id="date_fin"
+        name="datefin"
+        required
+        [(ngModel)]="data.datefin"
+      />
+
+      <label>Type de conge</label>
+      <select name="typeConge" [(ngModel)]="data.typeConge">
+        <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+      </select>
+      <br />
+      <label for="motif">Description de conge :</label>
+      <textarea
+        id="motif"
+        name="motif"
+        rows="4"
+        required
+        [(ngModel)]="data.motif"
+      ></textarea>
+
+      <button type="submit">Envoyer la Demande</button>
+    </form>
+  </div>
+</body>

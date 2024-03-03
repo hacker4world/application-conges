@@ -1,0 +1,32 @@
+<div class="employes-table">
+    <h2>Liste des employés</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Poste</th>
+          <th>Departement</th>
+          <th>Email</th>
+          <th>Solde de conges</th>
+          <th>genre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of employes" >
+          <td>{{data.id_employe}} </td>
+          <td>{{data.nom}} </td>
+          <td>{{data.prenom}}</td>
+          <td>{{data.poste}}</td>
+          <td>{{data.departement}}</td>
+          <td>{{data.email}}</td>
+          <td>{{data.solde_conges}}</td>
+          <td>{{data.genre}}</td>
+          <td><button [routerLink]="'../modifier/'+data.id_employe" >modifier</button></td>
+          <td><button [routerLink]="'../supprimer/'+data.id_employe" >supprimer</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ 

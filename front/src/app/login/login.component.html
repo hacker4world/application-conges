@@ -1,0 +1,23 @@
+
+<body>
+
+    <div class="login-container">
+      <form class="login-form">
+        <h2>Login</h2>
+  
+        <label for="ID">ID:</label>
+        <input type="text" id="ID" name="ID" required [(ngModel)]="data.id">
+  
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required [(ngModel)]="data.password">
+  
+        <a><button (click)="login()" >Login</button></a>
+        &nbsp;
+        <a routerLink="../create"><button>SingUp</button></a>
+      </form>
+    </div>
+    
+  
+  </body>
+
+  

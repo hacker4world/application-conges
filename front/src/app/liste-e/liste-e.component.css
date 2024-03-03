@@ -1,0 +1,47 @@
+.employes-table {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.employes-table h2 {
+  color: #333;
+}
+
+.employes-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.employes-table th, .employes-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.employes-table th {
+  background-color: #f2f2f2;
+}
+
+.employes-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.employes-table tr:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #3767eb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #3767eb;
+  }
