@@ -1,0 +1,29 @@
+<div id="form-holder">
+    <form (ngSubmit)="sendDataToBackend()">
+        <label for="ID">ID:</label>
+        <input type="text" id="ID" name="ID" [(ngModel)]="formData.id" required>
+    
+        <label for="Nom">Nom:</label>
+        <input type="text" id="Nom" name="Nom" required [(ngModel)]="formData.nom">
+    
+        <label for="Prenom">Prenom:</label>
+        <input type="text" id="Prenom" name="Prenom" required [(ngModel)]="formData.prenom">
+        
+            Homme<input type="radio" name="genre" value="homme" [(ngModel)]="formData.genre">
+            Femme<input type="radio" name="genre" value="femme" [(ngModel)]="formData.genre">
+                
+            
+
+        <label for="Departement">Departement:</label>
+        <input type="text" id="Departement" name="Departement" required [(ngModel)]="formData.departement">
+    
+        <label for="email">Adresse e-mail:</label>
+        <input type="email" id="email" name="email" required [(ngModel)]="formData.email">
+    
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" name="password" required [(ngModel)]="formData.password">
+    
+        <button type="submit">Créer un compte</button>
+    </form>
+    
+</div>

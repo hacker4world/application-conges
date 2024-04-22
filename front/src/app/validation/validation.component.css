@@ -1,0 +1,54 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .request {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .info {
+    border-collapse: collapse;
+    width: 50%;
+  }
+  
+ 
+  .info td{
+    padding-top: 12px;
+    text-align: left;
+  }
+  .info th {
+    padding-top: 12px;
+    
+    text-align: left;
+    
+    
+  }
+  
+  
+ 
+  
+  .actions {
+    text-align: right;
+  }
+  
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button.accept {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  button.reject {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  

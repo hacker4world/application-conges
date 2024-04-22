@@ -1,0 +1,35 @@
+<body>
+  <div class="container">
+    <h2>Historique de Congés</h2>
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Action</th>
+          <th>Date d'action</th>
+          <th>Date debut</th>
+          <th>Date fin</th>
+          <th>Type de congé</th>
+          <th>Motif</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let demande of historique">
+          <td>{{ demande.nom }}</td>
+          <td>{{ demande.prenom }}</td>
+          <td>{{ demande.action }}</td>
+          <td>{{ demande.date_action }}</td>
+          <td>{{ demande.date_debut }}</td>
+          <td>{{ demande.date_fin }}</td>
+          <td>{{ demande.type_conge }}</td>
+          <td>{{ demande.motif }}</td>
+        </tr>
+      </tbody>
+    </table>
+    &nbsp;
+    <div class="button-container">
+      <a href="../accueil" class="button3d">Return</a>
+    </div>
+  </div>
+</body>

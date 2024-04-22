@@ -1,0 +1,53 @@
+<div class="container">
+  <h2>Demande des congés en attente</h2>
+  <div class="request" *ngFor="let t of employes">
+    <table class="info">
+      <tr>
+        <th>ID :</th>
+        <td>{{ t.id_employe }}</td>
+      </tr>
+      <tr>
+        <th>Nom de l'employé:</th>
+        <td>{{ t.nom }}</td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <th>Prenom de l'employé:</th>
+        <td>{{ t.prenom }}</td>
+      </tr>
+      <tr>
+        <th>Date de demande:</th>
+        <td>{{ t.date_demande }}</td>
+      </tr>
+      <tr>
+        <th>Date de début:</th>
+        <td>{{ t.datedebut }}</td>
+      </tr>
+      <tr>
+        <th>Date de fin:</th>
+        <td>{{ t.datefin }}</td>
+      </tr>
+      <tr>
+        <th>Type de conge:</th>
+        <td>{{ t.typecongeid }}</td>
+      </tr>
+      <tr>
+        <th>Motif:</th>
+        <td>{{ t.motif }}</td>
+      </tr>
+      <tr>
+        <th>Jours du conge:</th>
+        <td>{{ t.jours }}</td>
+      </tr>
+      <tr>
+        <th>Solde de Conges:</th>
+        <td>{{ t.solde_conges }}</td>
+      </tr>
+    </table>
+    <div class="actions">
+      <button class="accept" (click)="acc(t.id_demande)">Accepter</button
+      >&nbsp;&nbsp;
+      <button class="reject" (click)="ref(t.id_demande)">Rejeter</button>
+    </div>
+  </div>
+</div>
