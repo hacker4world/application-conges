@@ -1,13 +1,12 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-accueil',
-  templateUrl: './accueil.component.html',
-  styleUrls: ['./accueil.component.css'],
+  selector: 'app-admin-navbar',
+  templateUrl: './admin-navbar.component.html',
+  styleUrls: ['./admin-navbar.component.css'],
 })
-export class AccueilComponent {
+export class AdminNavbarComponent {
   constructor(private readonly router: Router) {}
 
   public logout(): void {

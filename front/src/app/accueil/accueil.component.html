@@ -1,26 +1,45 @@
-
-<body>
-  <nav>
-  <div class="dashboard">
-    <section class="section" id="solde">
-     <a routerLink="../solde"><h2>Solde de Congés</h2></a>
-      
-    </section>
-
-    <section class="section" id="historique">
-     <a routerLink="../historique"><h2>Historique</h2></a>
-      
-    </section>
-
-    <section class="section" id="demandes">
-     <a routerLink="../demandeconges"><h2>Demandes de Congés</h2></a>
-      
-    </section>
-    <div class="button-container">
-        <a href="../login" class="button3d">Deconnect</a>
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Espace Employe</a>
   </div>
+</nav>
+
+<br /><br /><br />
+
+<div style="display: flex; justify-content: center">
+  <div class="card" style="width: 18rem" routerLink="../solde">
+    <img
+      src="https://static.vecteezy.com/system/resources/previews/000/695/351/large_2x/business-candle-stick-graph-chart-of-stock-market-vector.jpg"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">Solde de Congés</h5>
+    </div>
   </div>
-  </nav>
-</body>
+  <div class="card" style="width: 18rem" routerLink="../historique">
+    <img
+      src="https://www.logicalcube.com/wp-content/uploads/2023/10/l3-vector.jpg"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">Historique de Congés</h5>
+    </div>
+  </div>
 
-
+  <div class="card" style="width: 18rem" routerLink="../demandeconges">
+    <img
+      src="https://previews.123rf.com/images/onblast/onblast1704/onblast170400023/76217747-online-form-survey-on-laptop-vector-illustration-person-working-on-computer.jpg"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">Demande de Congés</h5>
+    </div>
+  </div>
+</div>
+<br /><br />
+<div style="display: flex; justify-content: center">
+  <button class="btn btn-danger" (click)="logout()">Se deconnecter</button>
+</div>

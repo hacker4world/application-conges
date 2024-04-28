@@ -18,6 +18,7 @@ import { ListeEComponent } from './liste-e/liste-e.component';
 import { ModifierComponent } from './modifier/modifier.component';
 import { SupprimerComponent } from './supprimer/supprimer.component';
 import { ValidationComponent } from './validation/validation.component';
+import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { ValidationComponent } from './validation/validation.component';
     ListeEComponent,
          ModifierComponent,
          SupprimerComponent,
-         ValidationComponent
+         ValidationComponent,
+         AdminNavbarComponent
   ],
   imports: [
     BrowserModule,

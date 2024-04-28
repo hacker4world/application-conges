@@ -8,6 +8,8 @@ import { ServiceCrService } from '../service-cr.service';
 })
 export class ValidationComponent {
   public employes: any[] = [];
+  public role: string = '';
+
   constructor(public service: ServiceCrService) {
     this.service.ListeD().subscribe((data) => {
       console.log(data);
@@ -20,6 +22,8 @@ export class ValidationComponent {
         }
         return e;
       });
+      let role = JSON.parse(localStorage.getItem('compte')!).poste;
+      this.role = role;
     });
   }
 

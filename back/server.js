@@ -40,38 +40,43 @@ app.post("/accepter_conge", (req, res) => {
     console.log(demande);
     if (!demande)
       return res.status(404).json({ msg: "id de demande invalide" });
-    let ajouterAuHistoriqueSql = `INSERT INTO historique_conges (id_demande, date_action, action, date_demande, date_debut, date_fin, id_employe, jours, nom, prenom, type_conge, motif) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`;
-    client.query(
-      ajouterAuHistoriqueSql,
-      [
-        demande.id_demande,
-        new Date(),
-        "accepte",
-        demande.date_demande,
-        demande.datedebut,
-        demande.datefin,
-        demande.id_employe,
-        demande.jours,
-        demande.nom,
-        demande.prenom,
-        demande.typecongeid,
-        demande.motif,
-      ],
-      function (err, response) {
-        if (err) {
-          console.log(err);
-          return res.status(500).json({ msg: "erreur d'acceptation" });
-        }
-        let effacerDemandeSql = `DELETE FROM demandesconges WHERE id_demande = ${id_demande}`;
-        client.query(effacerDemandeSql, [], function (err, response) {
+    // reduce solde
+    let soldeSql = `UPDATE Employes SET solde_conges = solde_conges - ${demande.jours} WHERE id_employe = ${demande.id_employe}`;
+    client.query(soldeSql, [], (error, result) => {
+      if (err) return res.status(500).json({ msg: "erreur d'acceptation" });
+      let ajouterAuHistoriqueSql = `INSERT INTO historique_conges (id_demande, date_action, action, date_demande, date_debut, date_fin, id_employe, jours, nom, prenom, type_conge, motif) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`;
+      client.query(
+        ajouterAuHistoriqueSql,
+        [
+          demande.id_demande,
+          new Date(),
+          "accepte",
+          demande.date_demande,
+          demande.datedebut,
+          demande.datefin,
+          demande.id_employe,
+          demande.jours,
+          demande.nom,
+          demande.prenom,
+          demande.typecongeid,
+          demande.motif,
+        ],
+        function (err, response) {
           if (err) {
             console.log(err);
             return res.status(500).json({ msg: "erreur d'acceptation" });
           }
-          res.json({ msg: "demande de conge accepté" });
-        });
-      }
-    );
+          let effacerDemandeSql = `DELETE FROM demandesconges WHERE id_demande = ${id_demande}`;
+          client.query(effacerDemandeSql, [], function (err, response) {
+            if (err) {
+              console.log(err);
+              return res.status(500).json({ msg: "erreur d'acceptation" });
+            }
+            res.json({ msg: "demande de conge accepté" });
+          });
+        }
+      );
+    });
   });
 });
 //mte3 refuse
@@ -259,6 +264,16 @@ function demande(req, res) {
     return res.status(400).json({
       msg: "Conge sans solde ne peut pas depasser 3 mois",
     });
+
+  const sqlSolde = `SELECT solde_conges FROM Employes WHERE id_employe = ${id}`;
+  client.query(sqlSolde, [], (error, result) => {
+    let solde = result.rows[0].solde_conges;
+    if (solde < jours) {
+      return res.status(400).json({
+        msg: "Votre solde de conges est insuffisant",
+      });
+    }
+  });
 
   let sqlSen =
     "INSERT INTO DemandesConges ( id_employe, datedebut , datefin , motif, nom, prenom, typecongeid, date_demande, jours) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)";

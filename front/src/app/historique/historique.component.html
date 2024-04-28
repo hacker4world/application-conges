@@ -1,35 +1,45 @@
-<body>
-  <div class="container">
-    <h2>Historique de Congés</h2>
-    <table class="history-table">
+<app-admin-navbar *ngIf="role == 'admin'"></app-admin-navbar> <br /><br />
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title" style="text-align: center">Historique de conges</h4>
+    <hr />
+    <table class="table table-striped">
       <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Prenom</th>
-          <th>Action</th>
-          <th>Date d'action</th>
-          <th>Date debut</th>
-          <th>Date fin</th>
-          <th>Type de congé</th>
-          <th>Motif</th>
-        </tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Type conge</th>
+        <th>Motif</th>
+        <th>Jours</th>
+        <th>Date demande</th>
+        <th>Date debut</th>
+        <th>Date fin</th>
+        <th>Action</th>
+        <th>Date action</th>
       </thead>
       <tbody>
-        <tr *ngFor="let demande of historique">
-          <td>{{ demande.nom }}</td>
-          <td>{{ demande.prenom }}</td>
-          <td>{{ demande.action }}</td>
-          <td>{{ demande.date_action }}</td>
-          <td>{{ demande.date_debut }}</td>
-          <td>{{ demande.date_fin }}</td>
-          <td>{{ demande.type_conge }}</td>
-          <td>{{ demande.motif }}</td>
+        <tr *ngFor="let h of historique">
+          <td>{{ h.nom }}</td>
+          <td>{{ h.prenom }}</td>
+          <td>{{ h.type_conge }}</td>
+          <td>{{ h.motif }}</td>
+          <td>{{ h.jours }}</td>
+          <td>{{ h.date_demande | date : "shortDate" }}</td>
+          <td>{{ h.date_debut | date : "shortDate" }}</td>
+          <td>{{ h.date_fin | date : "shortDate" }}</td>
+          <td>{{ h.action }}</td>
+          <td>{{ h.date_action | date : "shortDate" }}</td>
         </tr>
       </tbody>
     </table>
-    &nbsp;
-    <div class="button-container">
-      <a href="../accueil" class="button3d">Return</a>
+    <br />
+    <div style="display: flex; justify-content: center">
+      <button
+        class="btn btn-light"
+        routerLink="../accueil"
+        *ngIf="role != 'admin'"
+      >
+        Retour
+      </button>
     </div>
   </div>
-</body>
+</div>

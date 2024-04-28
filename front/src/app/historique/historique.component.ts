@@ -8,12 +8,16 @@ import { Component } from '@angular/core';
 })
 export class HistoriqueComponent {
   public historique: any[] = [];
+  public role: string = '';
   constructor(private readonly httpClient: HttpClient) {
     let user = JSON.parse(localStorage.getItem('compte')!);
     this.httpClient
       .get(`http://localhost:3001/historique/${user.id_employe}`)
       .subscribe((data: any) => {
         this.historique = data.historique;
+        console.log(this.historique);
+        let role = JSON.parse(localStorage.getItem('compte')!).poste;
+        this.role = role;
       });
   }
 }

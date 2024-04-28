@@ -39,6 +39,8 @@ export class DemandecongesComponent {
 
   public erreur: string = '';
 
+  public role: string = '';
+
   constructor(
     private apiService: ServiceCrService,
     private readonly router: Router
@@ -47,11 +49,16 @@ export class DemandecongesComponent {
     this.data.id = compte.id_employe;
     this.data.nom = compte.nom;
     this.data.prenom = compte.prenom;
+    let role = JSON.parse(localStorage.getItem('compte')!).poste;
+    this.role = role;
   }
 
   Demande() {
-    if (!this.data.datedebut || !this.data.datefin || !this.data.typeConge)
-      return alert('tous les champs sont obligatoires');
+    if (!this.data.datedebut || !this.data.datefin || !this.data.typeConge) {
+      this.erreur = 'tous les champs sont obligatoires';
+      return;
+    }
+
     let compte = JSON.parse(localStorage.getItem('compte')!);
     console.log(this.data);
     this.apiService

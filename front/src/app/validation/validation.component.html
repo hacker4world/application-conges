@@ -1,3 +1,5 @@
+<app-admin-navbar *ngIf="role == 'admin'"></app-admin-navbar> <br /><br />
+
 <div class="container">
   <h2>Demande des congés en attente</h2>
   <div class="request" *ngFor="let t of employes">

@@ -1,3 +1,5 @@
+<app-admin-navbar *ngIf="role == 'admin'"></app-admin-navbar>
+
 <div class="container">
   <h2>Modifier l'élément</h2>
   <form (ngSubmit)="modifier()">
@@ -11,10 +13,18 @@
         required
         readonly
         disabled
+        class="form-control"
       />
       <br />
       <label for="name">Nom :</label>
-      <input type="text" id="nom" name="nom" [(ngModel)]="nom" required />
+      <input
+        type="text"
+        id="nom"
+        name="nom"
+        [(ngModel)]="nom"
+        required
+        class="form-control"
+      />
       <br />
       <label for="prenom">Prenom :</label>
       <input
@@ -23,6 +33,7 @@
         name="prenom"
         [(ngModel)]="prenom"
         required
+        class="form-control"
       />
       <br />
       <label for="departement">Departement :</label>
@@ -32,10 +43,18 @@
         name="departement"
         [(ngModel)]="departement"
         required
+        class="form-control"
       />
       <br />
       <label for="email">E-mail :</label>
-      <input type="text" id="email" name="email" [(ngModel)]="email" required />
+      <input
+        type="text"
+        id="email"
+        name="email"
+        [(ngModel)]="email"
+        required
+        class="form-control"
+      />
       <br />
       <label for="password">Password :</label>
       <input
@@ -44,6 +63,7 @@
         name="password"
         [(ngModel)]="pwd"
         required
+        class="form-control"
       />
       <br />
     </div>

@@ -1,71 +1,87 @@
-<body>
-  <div class="container">
-    <h2>Demande de Congé</h2>
-    <p style="color: red" *ngIf="erreur">{{ erreur }}</p>
-    <form (ngSubmit)="Demande()">
-      <label for="nom">ID :</label>
-      <input
-        type="text"
-        id="id"
-        name="id"
-        required
-        [(ngModel)]="data.id"
-        [readOnly]="true"
-      />
-
-      <label for="nom">Nom :</label>
-      <input
-        type="text"
-        id="nom"
-        name="nom"
-        required
-        [(ngModel)]="data.nom"
-        [readOnly]="true"
-      />
-
-      <label for="nom">Prenom :</label>
-      <input
-        type="text"
-        id="prenom"
-        name="prenom"
-        required
-        [(ngModel)]="data.prenom"
-        [readOnly]="true"
-      />
-
-      <label for="date-debut">Date de Début :</label>
-      <input
-        type="date"
-        id="date_debut"
-        name="datedebut"
-        required
-        [(ngModel)]="data.datedebut"
-      />
-
-      <label for="date-fin">Date de Fin :</label>
-      <input
-        type="date"
-        id="date_fin"
-        name="datefin"
-        required
-        [(ngModel)]="data.datefin"
-      />
-
-      <label>Type de conge</label>
-      <select name="typeConge" [(ngModel)]="data.typeConge">
-        <option *ngFor="let type of types" [value]="type">{{ type }}</option>
-      </select>
+<app-admin-navbar *ngIf="role == 'admin'"></app-admin-navbar> <br /><br />
+<div style="display: flex; justify-content: center">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Demande de congé</h4>
       <br />
-      <label for="motif">Description de conge :</label>
-      <textarea
-        id="motif"
-        name="motif"
-        rows="4"
-        required
-        [(ngModel)]="data.motif"
-      ></textarea>
-
-      <button type="submit">Envoyer la Demande</button>
-    </form>
+      <div class="alert alert-danger" *ngIf="erreur">{{ erreur }}</div>
+      <form>
+        <label>ID :</label>
+        <input
+          type="text"
+          class="form-control"
+          name="id"
+          [(ngModel)]="data.id"
+          [readOnly]="true"
+        />
+        <br />
+        <label>Nom :</label>
+        <input
+          type="text"
+          class="form-control"
+          name="nom"
+          required
+          [(ngModel)]="data.nom"
+          [readOnly]="true"
+        />
+        <br /><br />
+        <label>Prenom :</label>
+        <input
+          type="text"
+          class="form-control"
+          name="prenom"
+          required
+          [(ngModel)]="data.prenom"
+          [readOnly]="true"
+        />
+        <br /><br />
+        <label>Date de debut :</label>
+        <input
+          type="date"
+          class="form-control"
+          name="datedebut"
+          required
+          [(ngModel)]="data.datedebut"
+        />
+        <br /><br />
+        <label>Date de fin :</label>
+        <input
+          type="date"
+          class="form-control"
+          name="datefin"
+          required
+          [(ngModel)]="data.datefin"
+        />
+        <br /><br />
+        <label>Type de congé :</label>
+        <select
+          class="form-select"
+          aria-label="Type de congé"
+          name="typeConge"
+          [(ngModel)]="data.typeConge"
+        >
+          <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+        </select>
+        <br /><br />
+        <label>Motif</label>
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            placeholder="Leave a comment here"
+            id="floatingTextarea2"
+            style="height: 100px"
+            name="motif"
+            required
+            [(ngModel)]="data.motif"
+          ></textarea>
+        </div>
+        <br /><br />
+        <div style="display: flex; justify-content: center">
+          <button class="btn btn-primary" (click)="Demande()">
+            Envoyer la demande
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-</body>
+</div>

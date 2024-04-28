@@ -15,6 +15,8 @@ export class ModifierComponent implements OnInit {
   public email: string;
   public pwd: string;
 
+  public role: string = '';
+
   constructor(
     private route: ActivatedRoute,
     private employeeService: ServiceCrService,
@@ -31,8 +33,10 @@ export class ModifierComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.id = +params['id'];
-
       this.loadEmployeeDetails();
+      let role = JSON.parse(localStorage.getItem('compte')!).poste;
+      this.role = role;
+      console.log(role);
     });
   }
 

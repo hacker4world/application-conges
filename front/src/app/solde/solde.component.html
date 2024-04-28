@@ -1,10 +1,22 @@
-<body>
-  <div class="container">
-    <h2>Solde de Congés</h2>
-    <div class="solde-info">
-      <p><strong>Nom de l'employé:</strong> {{ nom }}</p>
-      <p><strong>Solde de Congés:</strong> {{ solde }} jours</p>
-      <a routerLink="../accueil"><button>Return</button></a>
+<app-admin-navbar *ngIf="role == 'admin'"></app-admin-navbar> <br /><br /><br />
+
+<div style="display: flex; justify-content: center">
+  <div class="card" style="width: 30%">
+    <div class="card-body">
+      <h5 class="card-title">Votre solde de conges</h5>
+      <div class="card-body">
+        <p><strong>Nom et prenom</strong> : {{ nom }}</p>
+        <p><strong>Solde</strong> : {{ solde }} jours</p>
+      </div>
+      <div style="display: flex; justify-content: center">
+        <button
+          *ngIf="role != 'admin'"
+          class="btn btn-light"
+          routerLink="../accueil"
+        >
+          Retour
+        </button>
+      </div>
     </div>
   </div>
-</body>
+</div>
