@@ -162,6 +162,15 @@ function sendData(req, res) {
   });
 }
 
+app.get("/tous-historique", function (req, res) {
+  let historiqueSql = `SELECT * FROM historique_conges`;
+  client.query(historiqueSql, [], function (err, response) {
+    return res.json({
+      historique: response.rows,
+    });
+  });
+});
+
 app.get("/historique/:id", function (req, res) {
   let userId = req.params.id;
   let historiqueSql = `SELECT * FROM historique_conges WHERE id_employe = '${userId}'`;
